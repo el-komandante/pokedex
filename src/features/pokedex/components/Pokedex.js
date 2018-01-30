@@ -31,8 +31,8 @@ export default class Pokedex extends Component {
           <path className="pokedex__right" d="M400,35 460,35 Q480,35 500,55 T535,75 L800,75 800,600 400,600" />
         </g>
         </svg>
-        <Viewer pokemon={ this.props.pokemon } />
-        <Stats onKeyDown={ this.props.onKeyDown } pokemon={ this.props.pokemon } />
+        <Viewer pokemon={ this.props.pokemon } loading={ this.props.loading } />
+        <Stats onKeyDown={ this.props.onKeyDown } pokemon={ this.props.pokemon } loading={ this.props.loading } />
       </div>
     )
   }

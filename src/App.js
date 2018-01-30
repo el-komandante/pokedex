@@ -41,7 +41,11 @@ class App extends Component {
             return <div>{ error.message }</div>
           }
           if (!props) {
-            return <div>Loading...</div>
+            return (
+              <div className="app">
+                <Pokedex onKeyDown={ this.onSubmit } loading={ true } />
+              </div>
+            )
           }
           return (
             <div className="app">

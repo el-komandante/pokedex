@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 import typeColors from '../../../helpers/typeColors'
 import Type from './Type'
+import PokeballLoader from './PokeballLoader'
 
 class Viewer extends Component {
   renderTypes = () => {
@@ -10,13 +11,19 @@ class Viewer extends Component {
       return <Type key={ i } color={ typeColors[type] }>{ type }</Type>
     })
   }
+  renderPokemon = () => {
+    const { loading, pokemon } = this.props
+    if (!loading) {
+      return <img className="viewer__image" src={pokemon.image} alt={pokemon.name} />
+    } else {
+      return <PokeballLoader />
+    }
+  }
   render() {
-    console.log(this.props)
-    const { pokemon } = this.props
     return (
       <div className="viewer">
         <div className="viewer__image-container">
-          <img className="viewer__image" src={ pokemon.image } alt={ pokemon.name }/>
+          { this.renderPokemon() }
         </div>
         {/* <div className="viewer__info">
           <div className="viewer__info--item">

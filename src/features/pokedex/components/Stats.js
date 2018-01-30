@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
 
 class Stats extends Component {
+  componentDidMount() {
+    if (this.input) {
+      this.input.focus()
+    }
+  }
   onInputClick = (e) => {
     this.input.focus()
   }
@@ -12,7 +17,7 @@ class Stats extends Component {
     const { name, height, weight, types, order, description, genus } = this.props.pokemon
     console.log(description)
     return (
-      <div className="pokedex__stats">
+      <React.Fragment>
         <div className="pokedex__search-container" onClick={ this.onInputClick }>
           {/* <input type="search" className="pokedex__search-input" onKeyDown={ this.props.onKeyDown } /> */}
           <span className="pokedex__search-input" onKeyDown={ this.props.onKeyDown } ref={node => this.input = node} contentEditable="true" />
@@ -38,12 +43,16 @@ class Stats extends Component {
             {description}
           </div>
         </div>
-      </div>
+      </React.Fragment>
     )
   }
   render() {
     console.log(this.props)
-    return this.renderStats()
+    return (
+      <div className="pokedex__stats">
+        { !this.props.loading && this.renderStats() }
+      </div>
+    )
   }
 }
 
