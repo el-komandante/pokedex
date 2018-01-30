@@ -1,32 +1,53 @@
 import React, { Component } from 'react';
 import { graphql, QueryRenderer } from 'react-relay'
 import environment from './Environment'
-import Viewer from './features/viewer/Viewer'
+import Pokedex from './features/pokedex'
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      name: 'charmander'
+    }
+  }
+  onSubmit = (e) => {
+    if (e.keyCode === 13) {
+      console.log(Object.keys(e.target))
+      this.setState({
+        name: e.target.textContent
+      })
+      console.log('submitted', e.target.value)
+    }
+  }
   render() {
-    const { pokemonName } = this.props
+    const { name } = this.state
     console.log(this.props)
     return (
       <QueryRenderer
         environment={ environment }
         query={ graphql`
-          query AppPokemonQuery {
-            pokemon(name: "Mew") {
-              name
+          query AppPokemonQuery($name: String) {
+            pokemon(name: $name) {
+              ...Viewer_pokemon
+              ...Stats_pokemon
             }
           }
-        ` }
-        variables={ { pokemonName } }
+        `}
+        variables={ { name } }
         render={ ({error, props}) => {
+          console.log(error, props)
           if (error) {
-            return <div>Errrrror</div>
+            return <div>{ error.message }</div>
           }
           if (!props) {
             return <div>Loading...</div>
           }
-          return <div><Viewer {...props} /></div>
+          return (
+            <div className="app">
+              <Pokedex onKeyDown={ this.onSubmit } pokemon={ props.pokemon } />
+            </div>
+          )
         }}
       />
     )

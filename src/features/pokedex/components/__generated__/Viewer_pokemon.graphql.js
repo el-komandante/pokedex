@@ -11,6 +11,9 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type Viewer_pokemon = {|
   +name: ?string;
   +types: ?$ReadOnlyArray<?string>;
+  +height: ?number;
+  +weight: ?number;
+  +image: ?string;
 |};
 */
 
@@ -33,6 +36,27 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "types",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "height",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "weight",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "image",
       "storageKey": null
     }
   ],

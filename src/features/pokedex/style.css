@@ -1,0 +1,194 @@
+.pokedex__container {
+  height: 600px;
+  width: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.pokedex__svg {
+  height: 600px;
+  width: 800px;
+}
+
+.pokedex__left {
+  stroke: none;
+  fill: #c00f0c;
+}
+
+.pokedex__left--curve {
+  fill: #8b0000;
+}
+
+.pokedex__left--glass {
+  stroke-width: 3px;
+  stroke: white;
+  fill: #12daf1;
+}
+
+.pokedex__left--hinge {
+  fill: #950202;
+}
+
+.pokedex__left--red-light {
+  fill: #f5292a;
+}
+
+.pokedex__left--green-light {
+  fill: #7bfb45;
+}
+
+.pokedex__left--yellow-light {
+  fill: #fafb58;
+}
+
+.pokedex__left--circular-button {
+  fill: #184dee;
+}
+
+.pokedex__screen--bezel {
+  fill: #b0b0b0;
+}
+
+.pokedex__bezel--dot {
+  fill: #c00f0c;
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.pokedex__bezel--button {
+  fill: #a80707;
+}
+
+.pokedex__bezel--speaker {
+  stroke-width: 3px;
+  stroke: #494949;
+}
+
+.pokedex__right {
+  stroke-width: 1px;
+  stroke: #c00f0c;
+  fill: #c00f0c;
+}
+
+.pokedex__stats {
+  background: #30db0b;
+  position: absolute;
+  width: 300px;
+  height: 250px;
+  padding: 25px;
+  left: 425px;
+  top: 100px;
+  box-shadow: 0 0 20px #003300 inset;
+  border-radius: 20px;
+  font-family: 'VT323', monospace;
+  font-size: 1.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pokedex__stat--genus {
+  margin-top: 5px;
+}
+
+.pokedex__stat--description {
+  text-align: left;
+  margin-top: 5px;
+}
+
+.pokedex__search-container {
+  height: 1em;
+  width: 100%;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0px 5px;
+  cursor: text;
+}
+
+.pokedex__search-input {
+  background: #30db0b;
+  font-family: 'VT323', monospace;
+  outline: none;
+  font-size: 1em;
+  height: 1em;
+  text-align: left;
+  caret-color: rgba(0,0,0,0);
+}
+
+.pokedex__search-input--caret {
+  width: .5em;
+  height: 1em;
+  background: black;
+  animation: blink 1.2s infinite;
+}
+
+.viewer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  width: 200px;
+  height: 290px;
+  padding: 21px;
+  border-radius: 20px;
+  left: 50px;
+  top: 100px;
+  border: 4px solid #7b7b7b;
+}
+.viewer__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #636e72;
+}
+
+.viewer__info--type {
+  border-radius: 999px;
+  color: white;
+  padding: 5px 7px;
+}
+
+.viewer__info--type:nth-of-type(2n) {
+  margin-left: 5px;
+}
+
+.viewer__info--item {
+  padding: 5px 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: left;
+  align-items: center;
+  width: 100%;
+}
+
+.viewer__info--title {
+  width: 70px;
+}
+
+.viewer__image {
+  max-width: 100%;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  70.1% {
+    opacity: 1
+  }
+  100% {
+    opacity: 1;
+  }
+}
