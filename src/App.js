@@ -2,27 +2,17 @@ import React, { Component } from 'react';
 import { graphql, QueryRenderer } from 'react-relay'
 import environment from './Environment'
 import Pokedex from './features/pokedex'
+import { observer } from 'mobx-react'
 import './App.css';
 
+@observer
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      name: 'charmander'
-    }
-  }
   onSubmit = (e) => {
     if (e.keyCode === 13) {
-      console.log(Object.keys(e.target))
-      this.setState({
-        name: e.target.textContent
-      })
-      console.log('submitted', e.target.value)
+      this.props.store.changePokemon(e.target.value.toLowerCase())
     }
   }
   render() {
-    const { name } = this.state
-    console.log(this.props)
     return (
       <QueryRenderer
         environment={ environment }
@@ -34,11 +24,15 @@ class App extends Component {
             }
           }
         `}
-        variables={ { name } }
+        variables={ { name: this.props.store.pokemon } }
         render={ ({error, props}) => {
           console.log(error, props)
           if (error) {
-            return <div>{ error.message }</div>
+            return (
+              <div className="app">
+                <Pokedex onKeyDown={ this.onSubmit } error={ true } />
+              </div>
+            )
           }
           if (!props) {
             return (

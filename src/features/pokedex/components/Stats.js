@@ -15,14 +15,8 @@ class Stats extends Component {
   // }
   renderStats = () => {
     const { name, height, weight, types, order, description, genus } = this.props.pokemon
-    console.log(description)
     return (
       <React.Fragment>
-        <div className="pokedex__search-container" onClick={ this.onInputClick }>
-          {/* <input type="search" className="pokedex__search-input" onKeyDown={ this.props.onKeyDown } /> */}
-          <span className="pokedex__search-input" onKeyDown={ this.props.onKeyDown } ref={node => this.input = node} contentEditable="true" />
-          <span className="pokedex__search-input--caret" />
-        </div>
         <div className="pokedex__stat">
           <b>{`${name.charAt(0).toUpperCase()}${name.slice(1)}`}</b> #{order}
         </div>
@@ -50,7 +44,12 @@ class Stats extends Component {
     console.log(this.props)
     return (
       <div className="pokedex__stats">
-        { !this.props.loading && this.renderStats() }
+        <div className="pokedex__search-container" onClick={this.onInputClick}>
+          {/* <input type="search" className="pokedex__search-input" onKeyDown={ this.props.onKeyDown } /> */}
+          <span className="pokedex__search-input" onKeyDown={this.props.onKeyDown} ref={node => this.input = node} contentEditable="true" />
+          <span className="pokedex__search-input--caret" />
+        </div>
+        { (!this.props.loading && !this.props.error) && this.renderStats() }
       </div>
     )
   }

@@ -12,9 +12,11 @@ class Viewer extends Component {
     })
   }
   renderPokemon = () => {
-    const { loading, pokemon } = this.props
-    if (!loading) {
+    const { loading, pokemon, error } = this.props
+    if (!loading && !error) {
       return <img className="viewer__image" src={pokemon.image} alt={pokemon.name} />
+    } else if (error) {
+      return <PokeballLoader error={ true } />
     } else {
       return <PokeballLoader />
     }

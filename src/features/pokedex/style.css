@@ -67,16 +67,76 @@
   stroke: #494949;
 }
 
+.pokedex__left--radius-button-green {
+  fill: #50fb05;
+}
+
+.pokedex__left--radius-button-red {
+  fill: #fb0d05;
+}
+
+.pokedex__left--dpad {
+  fill: #222;
+}
+
 .pokedex__right {
   stroke-width: 1px;
   stroke: #c00f0c;
   fill: #c00f0c;
 }
 
+.pokedex__right--rect-buttons {
+  width: 250px;
+  position: absolute;
+  left: 450px;
+  top: 410px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.pokedex__right--rect-button {
+  width: 45px;
+  height: 35px;
+  margin-right: 5px;
+  margin-top: 5px;
+  background: #184dee;
+  border-radius: 10px;
+}
+
+.pokedex__right--dot-orange {
+  fill: #fd8439;
+}
+
+.pokedex__right--dot-green {
+  fill: #50fb05;
+}
+
+.pokedex__right--yellow-screens {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  left: 425px;
+  top: 525px;
+  width: 300px;
+}
+
+.pokedex__right--yellow-screen {
+  box-shadow: 0 0 20px #ff6600 inset;
+  height: 60px;
+  width: 140px;
+  background: #ffff00;
+  border-radius: 15px;
+}
+
+.pokedex__right--yellow-screen:first-of-type {
+  margin-right: 20px;
+}
+
 .pokedex__stats {
   background: #30db0b;
   position: absolute;
-  width: 300px;
+  width: 250px;
   height: 250px;
   padding: 25px;
   left: 425px;
@@ -87,8 +147,9 @@
   font-size: 1.4em;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
+  overflow-y: scroll;
 }
 
 .pokedex__stat--genus {
@@ -101,7 +162,7 @@
 }
 
 .pokedex__search-container {
-  height: 1em;
+  min-height: 1em;
   width: 100%;
   border: 2px solid black;
   display: flex;
@@ -109,6 +170,7 @@
   justify-content: flex-start;
   padding: 0px 5px;
   cursor: text;
+  margin-top: 25px;
 }
 
 .pokedex__search-input {
@@ -221,6 +283,15 @@
   z-index: 10;
 }
 
+.pokeball-loader__bottom {
+  height: 37.5px;
+  width: 75px;
+  border-radius: 0 0 75px 75px;
+  background: #f00000;
+  position: absolute;
+  bottom: 0;
+}
+
 @keyframes blink {
   0% {
     opacity: 0;
@@ -249,3 +320,23 @@
     opacity: 0;
   }
 }
+
+/* ::-webkit-scrollbar-button {
+  opacity: 0 !important;
+  display: block !important;
+  background: rgba(0,0,0,0) !important;
+  visibility: hidden !important;
+  display: none;
+} */
+ /* .pokedex__stats::-webkit-scrollbar-thumb {
+  background: black !important;
+} */
+
+.pokedex__stats::-webkit-scrollbar {
+  width: 10px !important;
+  display: block;
+}
+
+/*::-webkit-scrollbar-track {
+  height: 220px !important;
+} */

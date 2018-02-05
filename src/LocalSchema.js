@@ -50,7 +50,9 @@ const PokemonType = new GraphQLObjectType({
     },
     description: {
       type: GraphQLString,
-      resolve: pokemon => axios.get(pokemon.species.url).then(res => res.data.flavor_text_entries[25].flavor_text)
+      resolve: pokemon => axios.get(pokemon.species.url).then(res => {
+        return res.data.flavor_text_entries.filter(f => f.language.name === 'en')[0].flavor_text
+      })
     },
     genus: {
       type: GraphQLString,

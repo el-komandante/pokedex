@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PokedexModel from './features/pokedex/models'
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App pokemonName="Mew" />, document.getElementById('root'));
+const store = new PokedexModel()
+
+ReactDOM.render(<App store={ store } />, document.getElementById('root'));
 registerServiceWorker();
