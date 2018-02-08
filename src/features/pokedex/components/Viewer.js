@@ -27,17 +27,6 @@ class Viewer extends Component {
         <div className="viewer__image-container">
           { this.renderPokemon() }
         </div>
-        {/* <div className="viewer__info">
-          <div className="viewer__info--item">
-            <b className="viewer__info--title">HT:</b> { pokemon.height }m
-          </div>
-          <div className="viewer__info--item">
-            <b className="viewer__info--title">WT:</b> { pokemon.weight}kg
-          </div>
-          <div className="viewer__info--item">
-            <b className="viewer__info--title">TYPES:</b> { this.renderTypes() }
-          </div>
-        </div> */}
       </div>
     )
   }

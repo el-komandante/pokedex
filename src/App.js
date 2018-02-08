@@ -9,7 +9,7 @@ import './App.css';
 class App extends Component {
   onSubmit = (e) => {
     if (e.keyCode === 13) {
-      this.props.store.changePokemon(e.target.value.toLowerCase())
+      this.props.store.changePokemon(e.target.textContent.toLowerCase())
     }
   }
   render() {

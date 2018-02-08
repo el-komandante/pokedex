@@ -8,7 +8,7 @@ export default class PokeballLoader extends Component {
         <div className="pokeball-loader__top" />
         <div className="pokeball-loader__centerline" />
         <div className="pokeball-loader__center" />
-        <div className="pokeball-loader__bottom" />
+        {error && <div className="pokeball-loader__bottom" />}
       </div>
     )
   }

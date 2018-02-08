@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import { graphql, createFragmentContainer } from 'react-relay'
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
 
+@observer
 class Stats extends Component {
   componentDidMount() {
     if (this.input) {
       this.input.focus()
     }
   }
+  @observable caretPosition = 0
   onInputClick = (e) => {
     this.input.focus()
   }
-  // onInputDoubleClick = (e) => {
-  //   this.input.select()
-  // }
+  onInputChange = (e) => {
+    this.caretPosition = window.getSelection().getRangeAt(0).endOffset
+    console.log(this.caretPosition)
+  }
   renderStats = () => {
     const { name, height, weight, types, order, description, genus } = this.props.pokemon
     return (
@@ -40,14 +45,31 @@ class Stats extends Component {
       </React.Fragment>
     )
   }
+  renderCaret = () => {
+    if (this.input) {
+      const { width } = this.input.getBoundingClientRect()
+      if (this.input.textContent.length > 0) {
+        const charWidth = width / this.input.textContent.length
+        return (
+          <span className="pokedex__search-input--caret" style={ { left: `${charWidth * this.caretPosition}px` } } />
+        )
+      }
+    }
+  }
   render() {
     console.log(this.props)
+    console.log(this.caretPosition)
     return (
       <div className="pokedex__stats">
         <div className="pokedex__search-container" onClick={this.onInputClick}>
-          {/* <input type="search" className="pokedex__search-input" onKeyDown={ this.props.onKeyDown } /> */}
-          <span className="pokedex__search-input" onKeyDown={this.props.onKeyDown} ref={node => this.input = node} contentEditable="true" />
-          <span className="pokedex__search-input--caret" />
+          <span
+            className="pokedex__search-input"
+            onInput={this.onInputChange}
+            onKeyDown={this.props.onKeyDown}
+            ref={node => this.input = node}
+            contentEditable="true"
+          />
+          { this.renderCaret() }
         </div>
         { (!this.props.loading && !this.props.error) && this.renderStats() }
       </div>
